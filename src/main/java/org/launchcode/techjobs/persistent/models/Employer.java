@@ -13,18 +13,33 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
+
+//    @OneToMany(mappedBy = "employer_id")
+    @OneToMany
+    @JoinColumn(name = "employer_id")
+    private List<Job> jobs = new ArrayList<>();
+
+
     @NotBlank(message = "Location is required")
     @Size(max= 150)
     private String location;
 
-//    @OneToMany(mappedBy = "employer")
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<Job> jobs = new ArrayList<>();
+
 
     public Employer() {
     }
 
+    public List<Job> getJobs() {
+        return jobs;
+    }
+
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
+
+    //    public List<Job> getJobs() {
+//        return jobs;
+//    }
     public String getLocation() {
         return location;
     }

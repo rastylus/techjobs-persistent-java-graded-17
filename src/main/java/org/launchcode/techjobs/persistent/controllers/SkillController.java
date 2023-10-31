@@ -29,7 +29,7 @@ public class SkillController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("skills", skillRepository.findAll());
-        return "/string/index";
+        return "/skills/index";
     }
 
     @GetMapping("add")
@@ -48,6 +48,7 @@ public class SkillController {
         skillRepository.save(newSkill);
         return "redirect:";
     }
+
 
 
 
